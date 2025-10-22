@@ -7,11 +7,12 @@ import { getNews } from "@/lib/actions/finhub.actions";
 import { getFormattedTodayDate } from "@/lib/utils";
 
 // Define UserForNewsEmail type if not already imported
-// type UserForNewsEmail = {
-//     email: string;
-//     name: string;
+type UserForNewsEmail = {
+    email: string;
+    name: string;
+       id : string;
 //     // Add other relevant fields if needed
-// };
+ };
 
 // export type UserForNewsEmail = {
 //   email: string;
@@ -80,8 +81,8 @@ export const sendDailyNewsSummary = inngest.createFunction(
 
         // Step #2: For each user, get watchlist symbols -> fetch news (fallback to general)
         const results = await step.run('fetch-user-news', async () => {
-            const perUser: Array<{ user: User; articles: MarketNewsArticle[] }> = [];
-            for (const user of users as User[]) {
+            const perUser: Array<{ user: UserForNewsEmail; articles: MarketNewsArticle[] }> = [];
+            for (const user of users as UserForNewsEmail[]) {
                 try {
                     const symbols = await getWatchlistSymbolsByEmail(user.email);
                     let articles = await getNews(symbols);
@@ -102,7 +103,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
         });
 
         // Step #3: (placeholder) Summarize news via AI
-        const userNewsSummaries: { user: User; newsContent: string | null }[] = [];
+        const userNewsSummaries: { user: UserForNewsEmail; newsContent: string | null }[] = [];
 
         for (const { user, articles } of results) {
                 try {
