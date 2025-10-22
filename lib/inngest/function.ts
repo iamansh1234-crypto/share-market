@@ -66,49 +66,7 @@ export const sendSignUpEmail = inngest.createFunction(
     }
 )
 
-// export const sendDailyNewsSummary = inngest.createFunction(
-//     { id: 'daily-news-summary' },
-//     [ { event: 'app/send.daily.news' }, { cron: '0 12 * * *' } ],
-//     async ({ step }) => {
-//         // steps 1 . get all user for news delivery
-//         const users = await step.run('get-all-users' , getAllUsersForNewsEmail)
 
-//           if(!users || users.length === 0) return { success: false, message: 'No users found for news email' };
-//         // steps 2 . Fetch persolnalized news for each user
-//           const results = await step.run('fetch-user-news', async () => {
-//             const perUser: Array<{ user: UserForNewsEmail ; articles: MarketNewsArticle[] }> = [];
-//             for (const user of users as UserForNewsEmail[]) {
-//                 try {
-//                     const symbols = await getWatchlistSymbolsByEmail(user.email);
-                    
-//                     let articles = await getNews(symbols);
-//                     // Enforce max 6 articles per user
-//                     articles = (articles || []).slice(0, 6);
-//                     // If still empty, fallback to general
-//                     if (!articles || articles.length === 0) {
-//                         articles = await getNews();
-//                         articles = (articles || []).slice(0, 6);
-//                     }
-//                     perUser.push({ user, articles });
-//                 } catch (e) {
-//                     console.error('daily-news: error preparing user news', user.email, e);
-//                     perUser.push({ user, articles: [] });
-//                 }
-//             }
-//             return perUser;
-//         });
-//         // steps 3 . summarise news using ai for each user
-//         const userNewsSummaries : {user : User; newsContent : string |null}[] = [] ;
-//         for(const {user,news} of results){
-//             try{}catch(e){console.error('daily-news: error summarizing news for', user.email, e);
-//                 userNewsSummaries.push({ user, newsContent: null });
-
-//             }
-//         }
-//         // steps 4 . send email to each user
-        
-//     }
-// )
 
 
 export const sendDailyNewsSummary = inngest.createFunction(
@@ -162,7 +120,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
 
                     userNewsSummaries.push({ user, newsContent });
                 } catch (e) {
-                    console.error('Failed to summarize news for : ', user.email);
+                    console.error('Failed to summarize news for : ', user.id);
                     userNewsSummaries.push({ user, newsContent: null });
                 }
             }
