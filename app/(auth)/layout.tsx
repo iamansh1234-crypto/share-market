@@ -7,7 +7,7 @@
 //       <main className="min-h-screen text-gray-400">
 //              <section className="auth-left-section scrollbar-hide-default">
 //                 <Link href="/" className="auth-logo">
-//                     <Image src="/assets/icons/logo.svg" alt="Signalist logo" width={140} height={32} className='h-8 w-auto' />
+//                     <Image src="/assets/icons/logo.svg" alt="TradeEdge logo" width={140} height={32} className='h-8 w-auto' />
 //                 </Link>
 
 //                 <div className="pb-6 lg:pb-8 flex-1">{children}</div>
@@ -16,7 +16,7 @@
 //              <section className="auth-right-section">
 //                 <div className="z-10 relative lg:mt-4 lg:mb-16">
 //                     <blockquote className="auth-blockquote">
-//                         Signalist turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
+//                         TradeEdge turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
 //                     </blockquote>
 //                    </div>
 //             </section>
@@ -44,7 +44,7 @@ const Layout = async ({ children }: { children : React.ReactNode }) => {
         <main className="auth-layout">
             <section className="auth-left-section scrollbar-hide-default ">
                 <Link href="/" className="auth-logo">
-                    <Image src="/assets/icons/logo.svg" alt="Signalist logo" width={140} height={32} className='h-8 w-auto' />
+                    <Image src="/assets/images/logo1.png" alt="TradeEdge logo" width={80} height={80} className='h-15 w-80' />
                 </Link>
 
                 <div className="pb-6 lg:pb-8 flex-1">{children}</div>
@@ -53,7 +53,7 @@ const Layout = async ({ children }: { children : React.ReactNode }) => {
             <section className="auth-right-section">
                 <div className="z-10 relative lg:mt-4 lg:mb-16">
                     <blockquote className="auth-blockquote">
-                        Signalist turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
+                        TradeEdge turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
                     </blockquote>
                     <div className="flex items-center justify-between">
                         <div>
